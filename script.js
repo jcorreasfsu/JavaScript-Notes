@@ -122,21 +122,25 @@ Functions:
     - Defining Functions inside of functions
     - Parameters/Default Parameters
 */
-// let pizza = 10;
 
-// console.log(pizza);
-
+//This is how you create a function in JavaScript
 function squareArray(array){
 
     for(let i = 0; i < array.length; i++){
         array[i] = square(array[i]);
     }
 
+    // You can create a function inside of a function. Inner functions only exist in the outer function
     function square(num){
         return num*num;
     }
 }
 
+/*
+    In the example below, we show how you can have defaul arguments.
+    In the example below, if the second argument is missing, the second parameter will default to 0.
+        - If we pass the second argument, then it will take the value we give it instead of the default parameter
+*/
 let quotient = divide(4)
 console.log(quotient);
 
@@ -145,9 +149,6 @@ function divide(numerator, denominator = 0){
     // console.log(denominator);
 }
 
-// function sum(num1, num2){
-
-// } 
 
 /*
     Objects: HashMap equivalent for JavaScript
@@ -192,14 +193,70 @@ delete obj.numOfStudents;
     - document.getElemebtById("id");
         - innerText
         - innerHTML
-        - nextElementSibling 
+        - nextElementSibling
+        - previousElementSibling 
         - parent
-    - document.querySelector
-    - document.querySelectorAll
+    -document.getElementsByClassName()
+    - document.querySelector()
+    - document.querySelectorAll()
     - style attribute on HTML elements
     - classList property
     - addEventListener()
     - event parameter
     - createElement() 
+    - appendChild()
+    - remove()
 */
+
+//getElementById(): Is a function you use to access an HTML element using JavaScript.
+const element = document.getElementById("pElement");   //Grabbing the element that has the id of "pElement"
+const divElement = document.getElementById("div1");    //Grabbing the element that has the id of "div1"
+
+//The innerText property of an HTML element allows you to change the text the HTML element holds.
+element.innerText = "I am changing the inner text of the element with the id of pElement";
+
+//The innerHTML property of an HTML element allows you to change the HTML the element holds.
+divElement.innerHTML = "<p>This is another p tag that is added to the Div container</p>";
+
+/*
+    The addEvenListener() method allows you to make elements perform specific tasks when the user does something to the element
+    In this case the element performs the function when it is clicked on. Notice the method takes two arguments:
+        1. The event you want the element to wait for
+        2. The fucntion you want to perform. In the example below I used an anonymous function as the second argument
+    The event parameter allows you to get information about the event. (This parameter is optional)
+*/
+
+element.addEventListener("click", (event) => {
+    //event.target references the element that was clicked on 
+    let clickedElement = event.target;
+    element.style.display = "none";
+});
+
+/*
+    The previousElementSibling property allows you to access the sibling of a specific element.
+    If there is no previous sibling then it will return null.
+*/
+var prevSibling = divElement.previousElementSibling;
+
+/*
+    The parentElement property allows you to access the parent element of an HTML element.
+*/
+const listParent = list.parentElement;
+
+/*
+    The querySelectorAll() method is another method that allows you to store ALL elements, that meet the criteria, in a variable. 
+    You can use a class or id name with this function.
+    If you are specifying you want to grab all elements with a specific class name, you add a period before the class name
+        - Example of this below
+    If you are specifying you want to grab all elements with an ID, you use the # symbol instead of the period
+*/
+const drinks = document.querySelectorAll(".drink");
+
+/*
+    The classList property allows you to access the classes that an element contains
+    Once you access the class list, you can add/remove classes from the element.
+        - In the example below we are adding the "delete" class to the button element.
+*/ 
+button.classList.add("delete")
+
 
